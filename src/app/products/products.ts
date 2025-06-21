@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, output, Output } from '@angular/core';
+import { Component, inject, OnInit, output, Output, signal } from '@angular/core';
 import { Http } from '../http';
 import { Subscription } from 'rxjs';
 import { Product } from "../product/product";
@@ -7,18 +7,18 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [Product,CommonModule],
+  imports: [Product],
   templateUrl: './products.html',
   styleUrl: './products.scss'
 })
 export class Products implements OnInit{
   data$!:Subscription;
-  products:any[]=[]
+  products=signal([]);
  private productsCall=inject(Http);
 ngOnInit(): void {
   this.data$=this.productsCall.getProducts().subscribe({
   next:(data:any)=>{
-    this.products=data.products as any[];
+    this.products.set(data.products);
     console.log(this.products);
    
   },
