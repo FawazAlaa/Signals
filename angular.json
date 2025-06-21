@@ -27,6 +27,8 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.scss"
             ]
           },
@@ -87,5 +89,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "699df6ea-5203-44cb-af5d-ad01a5264968"
   }
 }
